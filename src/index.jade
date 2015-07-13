@@ -1,0 +1,42 @@
+doctype
+html.no-js(lang='ru')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='assets/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/styles.css')
+    //-script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    //-script(src='assets/bootstrap/js/bootstrap.min.js')
+  body
+    <!--[if lt IE 8]>
+    p.browsehappy
+      | You are using an <strong>outdated</strong> browser.
+      | Please <a href="http://browsehappy.com/">upgrade your browser</a>
+      | to improve your experience.
+    <![endif]-->
+  body(ng-app='vehicles')
+    div#vehiclesControl.container(ng-controller='VehiclesCtrl' ng-init='refresh()')
+      div.row(style='padding-top:40px;')
+        .col-md-5.form-inline
+          .form-group
+            .input-group
+              input#selectVehicle.form-control(type='text', ng-model='q', ng-focus='showDropdown($event)', placeholder='Транспортное средство', focus='true', ng-keyup='refresh(true)', tabindex='1', aria-describedby='basic-addon')
+              span#basic-addon.input-group-addon(ng-class='{green: selected.id > 0}')
+                span.glyphicon.glyphicon-ok
+        .col-md-7 {{selected}}
+
+            //- input#selectOther.form-control(type='text')
+            //-input#selectVehicle.form-control(type='text', ng-model='q', ng-focus='showDropdown($event)', placeholder='Транспортное средство', focus='true', ng-keyup='refresh(true)', tabindex='1')
+            
+      include ./_dropdownTemplate.jade
+
+    script(src='js/app.min.js')
+    //-script.
+      angular.module('vehicles').run(function($rootScope) {
+        angular.element(document).on("click", function(e) {
+          $rootScope.$broadcast("documentClicked", angular.element(e.target));
+        });
+      });
