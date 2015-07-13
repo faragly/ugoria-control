@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.min.css">
+  </head>
+  <body><!--[if lt IE 8]>
+    <p class="browsehappy">
+      You are using an <strong>outdated</strong> browser.
+      Please <a href="http://browsehappy.com/">upgrade your browser</a>
+      to improve your experience.
+    </p><![endif]-->
+  </body>
+  <body ng-app="vehicles">
+    <div id="vehiclesControl" ng-controller="VehiclesCtrl" ng-init="refresh()" class="container">
+      <div style="padding-top:40px;" class="row">
+        <div class="col-md-5 form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input id="selectVehicle" type="text" ng-model="q" ng-focus="showDropdown($event)" placeholder="Транспортное средство" focus="true" ng-keyup="refresh(true)" tabindex="1" aria-describedby="basic-addon" class="form-control"><span id="basic-addon" ng-class="{green: selected.id &gt; 0}" class="input-group-addon"><span class="glyphicon glyphicon-ok"></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-7">{{selected}}</div>
+      </div>
+      <div ng-class="{show: dropdownVisible}" data-for-input="#selectVehicle" class="dropdown bottom">
+        <div tabindex="0" ng-keydown="keys.arrows($event)" class="inner">
+          <div class="dropdown-content">
+            <div class="flex-container">
+              <div ng-if="loading" role="spinner" class="spinner">
+                <div class="spinner-icon"></div>
+              </div>
+              <nav ng-hide="(!selected.segments[0] &amp;&amp; !hasTail) || !q.length" class="tabs-left">
+                <ul class="nav nav-tabs">
+                  <li ng-repeat="item in filteredSegments track by $index" ng-class="{active: item == selected.segments[0]}"><a href="#" ng-click="item != selected.segments[0] ? select(item) : noop()">{{item}}</a></li>
+                </ul>
+              </nav>
+              <aside class="clearfix">
+                <div ng-hide="loading" class="flex-container"> 
+                  <div ng-repeat="elem in data track by $index" ng-hide="elem.id === null &amp;&amp; selected.segments.length &lt; 2" class="item"> <a href="#" ng-click="select(elem)" tabindex="{{$index+1}}">{{elem.id ? elem.segments[1] : elem.segments[0]}}</a>
+                  </div>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/app.min.js"></script>
+  </body>
+</html>
