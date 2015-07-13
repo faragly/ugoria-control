@@ -1,0 +1,26 @@
+{
+  "name": "Ugoria",
+  "version": "1.0.0",
+  "description": "Vehicles control",
+  "main": "App",
+  "keywords": [
+    "angularjs"
+  ],
+  "authors": [
+    "Фараджли Халик"
+  ],
+  "license": "MIT",
+  "homepage": "7hm.ru",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.2",
+    "jquery": "~2.1.4"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "name": "Ugoria",
+  "version": "1.0.0",
+  "description": "Vehicles control",
+  "main": "app.js",
+  "scripts": {},
+  "author": "Faradzhli Khalik",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.7.7",
+    "browserify": "^10.2.4",
+    "browserify-shim": "^3.8.8",
+    "coffee-script": "^1.9.3",
+    "colors": "^1.1.0",
+    "del": "^1.2.0",
+    "gulp": "^3.9.0",
+    "gulp-jade": "^1.0.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-stylus": "^2.0.3",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4",
+    "http-proxy-middleware": "^0.1.0",
+    "nib": "^1.1.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
+  },
+  "dependencies": {
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "jquery": "./bower_components/jquery/dist/jquery.js",
+    "angular": "./bower_components/angular/angular.js"
+  },
+  "browserify-shim": {
+    "jquery": {
+      "exports": "$"
+    },
+    "angular": {
+      "exports": "angular"
+    }
+  }
+}
