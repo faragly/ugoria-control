@@ -23,4 +23,6 @@ gulp
 ```
 **CORS** не позволяет нам общаться с удаленным сервисом посредством ajax-запросов из-за соображений безопасности, поэтому в проекте используется проксирование запросов с локалхоста при помощи gulp-плагина ([http-proxy-middleware](https://www.npmjs.com/package/http-proxy-middleware)).
 
- 
+
+### Что получится на выходе?
+![enter image description here](https://raw.githubusercontent.com/faragly/ugoria-control/master/demo.gif)
