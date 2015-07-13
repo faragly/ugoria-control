@@ -4,9 +4,11 @@
 ```	npm install -g bower	``` 
 3. установить [GulpJS](http://gulpjs.com/)
 ```	npm install -g gulp	```
-4. Склонировать репозиторий
+4. установить [CoffeeScript](https://www.npmjs.com/package/coffee-script)
+```	npm install -g coffee-script ```
+5. Склонировать репозиторий
 ```git clone https://github.com/faragly/ugoria-control.git```
-5. Перейти в папку, куда клонировали репозиторий и выполнить последовательно
+6. Перейти в папку, куда клонировали репозиторий и выполнить последовательно
 ```
 bower install
 npm install
