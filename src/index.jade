@@ -7,9 +7,7 @@ html.no-js(lang='ru')
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='assets/bootstrap/css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/styles.css')
-    //-script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
-    //-script(src='assets/bootstrap/js/bootstrap.min.js')
+    link(rel='stylesheet', href='css/styles.min.css')
   body
     <!--[if lt IE 8]>
     p.browsehappy
@@ -27,16 +25,5 @@ html.no-js(lang='ru')
               span#basic-addon.input-group-addon(ng-class='{green: selected.id > 0}')
                 span.glyphicon.glyphicon-ok
         .col-md-7 {{selected}}
-
-            //- input#selectOther.form-control(type='text')
-            //-input#selectVehicle.form-control(type='text', ng-model='q', ng-focus='showDropdown($event)', placeholder='Транспортное средство', focus='true', ng-keyup='refresh(true)', tabindex='1')
-            
       include ./_dropdownTemplate.jade
-
     script(src='js/app.min.js')
-    //-script.
-      angular.module('vehicles').run(function($rootScope) {
-        angular.element(document).on("click", function(e) {
-          $rootScope.$broadcast("documentClicked", angular.element(e.target));
-        });
-      });
