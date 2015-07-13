@@ -24,18 +24,7 @@ ajax-запросов из-за соображений безопасности,
   app.service('dataService', require('./services/data'));
   app.service('keysService', require('./services/keys'));
   app.directive('focus', require('./directives/focus'));
-  app.filter('filteredSegments', function() {
-    return function(items, name) {
-      var filtered = [];
-      name = name || '';
-      angular.forEach(items, function(item) {
-        if(angular.isUndefined(item.id) || item.id === null){
-          filtered.push(item.segments[0]);
-        }
-      });
-      return filtered;
-    };
-  });
+  app.filter('filteredSegments', require('./filters/segments'));
   app.run(['$rootScope', function($rootScope) {
       angular.element(document).on("click", function(e) {
         $rootScope.$broadcast("documentClicked", angular.element(e.target));
