@@ -18,12 +18,12 @@ html.no-js(lang='ru')
   body(ng-app='vehicles')
     div#vehiclesControl.container(ng-controller='VehiclesCtrl' ng-init='refresh()')
       div.row(style='padding-top:40px;')
-        .col-md-5.form-inline
+        .col-md-3.form-inline
           .form-group
             .input-group
               input#selectVehicle.form-control(type='text', ng-model='q', ng-focus='showDropdown($event)', placeholder='Транспортное средство', focus='true', ng-keyup='refresh(true)', tabindex='1', aria-describedby='basic-addon')
               span#basic-addon.input-group-addon(ng-class='{green: selected.id > 0}')
                 span.glyphicon.glyphicon-ok
-        .col-md-7 {{selected}}
+        .col-md-9 {{selected}}
       include ./_dropdownTemplate.jade
     script(src='js/app.min.js')

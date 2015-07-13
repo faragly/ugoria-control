@@ -19,14 +19,14 @@
   <body ng-app="vehicles">
     <div id="vehiclesControl" ng-controller="VehiclesCtrl" ng-init="refresh()" class="container">
       <div style="padding-top:40px;" class="row">
-        <div class="col-md-5 form-inline">
+        <div class="col-md-3 form-inline">
           <div class="form-group">
             <div class="input-group">
               <input id="selectVehicle" type="text" ng-model="q" ng-focus="showDropdown($event)" placeholder="Транспортное средство" focus="true" ng-keyup="refresh(true)" tabindex="1" aria-describedby="basic-addon" class="form-control"><span id="basic-addon" ng-class="{green: selected.id &gt; 0}" class="input-group-addon"><span class="glyphicon glyphicon-ok"></span></span>
             </div>
           </div>
         </div>
-        <div class="col-md-7">{{selected}}</div>
+        <div class="col-md-9">{{selected}}</div>
       </div>
       <div ng-class="{show: dropdownVisible}" data-for-input="#selectVehicle" class="dropdown bottom">
         <div tabindex="0" ng-keydown="keys.arrows($event)" class="inner">
