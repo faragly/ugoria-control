@@ -14,7 +14,7 @@ function options() {
       getRequestInterval: function() { return requestInterval; },
       getRootUrl: function() { return rootUrl; }
     };
-  }
+  };
 }
 
 module.exports = [options];

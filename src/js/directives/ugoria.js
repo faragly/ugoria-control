@@ -40,7 +40,7 @@ function ugoriaControl($templateCache, $compile, $parse, $timeout, $filter, $roo
 
     // вызывается при клике на документе, если клик не на dropdown или фокус не на текстовом поле, то скрываем dropdown
     function dropdownClicked(e) {
-      if (!jQuery(e.target).closest(dropdownElem).is(dropdownElem) > 0 && !jQuery(element).is(':focus')) {
+      if (!(jQuery(e.target).closest(dropdownElem).is(dropdownElem) > 0 && jQuery(element).is(':focus'))) {
         toggleVisibility(false);
       }
     }
