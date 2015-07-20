@@ -132,7 +132,7 @@ function UgoriaCtrl($scope, $element, $attrs, $parse, $filter, $timeout, dataSer
     vm.text = elem.segments.join(' ');
     angular.element($element).val(elem.segments.join(' '));
     vm.refresh(vm.hasTail, elem.segments);
-    jQuery($element).next().children('.inner').focus();
+    jQuery($element).next().children('.dropdown__inner').focus();
   };
 }
 

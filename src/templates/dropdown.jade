@@ -1,23 +1,13 @@
-.dropdown.bottom(ng-class='{show: uc.dropdownVisible}')
-  .inner(tabindex='0', ng-keydown='uc.keys.arrows($event)')
-    .dropdown-content
+.dropdown(data-ng-class='{\'dropdown--show\': uc.dropdownVisible}')
+  .dropdown__inner(tabindex='0', data-ng-keydown='uc.keys.arrows($event)')
+    .dropdown__inner-content
       .flex-container
-        .spinner(ng-if='uc.loading', role="spinner"): .spinner-icon
-        nav.tabs-left(ng-hide='!((uc.selected.segments[0] && uc.hasTail) || uc.text.length)')
-          //-(!uc.selected.segments[0] && !uc.hasTail) || !uc.text.length
-          ul.nav.nav-tabs
-            li(ng-repeat='item in uc.filteredSegments track by $index', ng-class='{active: item == uc.selected.segments[0]}'): a(href='#', ng-click='item != uc.selected.segments[0] ? uc.select(item) : null') {{item}}
-          //-.show-all: button.btn.btn-primary.btn-block(type="button") Назад
-        .content.clearfix
-          //-, hotkey='{down: close}
-
-          .flex-container(ng-hide='uc.loading') 
-            div(ng-if='!uc.data.length') Ничего не найдено.
-            //- || (uc.data.length === 1 && uc.data[0].segments.id === null)
-            .item(ng-repeat='elem in uc.data track by $index', ng-hide='elem.id === null && uc.selected.segments.length < 2') 
-              //-a(href='#', ng-click='selectFirm(elem.segments[0])', data-arr='{{elem}}') {{elem.id ? elem.segments[1] : elem.segments[0]}}
-              a(href='#', ng-click='uc.select(elem)', tabindex='{{$index+1}}') {{elem.id ? elem.segments[1] : elem.segments[0]}}
-          //-.row
-            //-.clearfix(ng-if='')
-            .item.col-md-3(ng-repeat='elem in data track by $index') 
-              a(href='#') {{elem.segments}}    }
+        .spinner(data-ng-if='uc.loading', role="spinner"): .spinner__icon
+        nav(data-ng-hide='!((uc.selected.segments[0] && uc.hasTail) || uc.text.length)')
+          ul.menu
+            li.menu__item(data-ng-repeat='item in uc.filteredSegments track by $index', data-ng-class='{\'menu__item--active\': item == uc.selected.segments[0]}'): a(href='#', data-ng-click='item != uc.selected.segments[0] ? uc.select(item) : null') {{item}}
+        .content
+          .flex-container(data-ng-hide='uc.loading') 
+            div(data-ng-if='!uc.data.length') Ничего не найдено.
+            .item(data-ng-repeat='elem in uc.data track by $index', data-ng-hide='elem.id === null && uc.selected.segments.length < 2')
+              a(href='#', data-ng-click='uc.select(elem)', tabindex='{{$index+1}}') {{elem.id ? elem.segments[1] : elem.segments[0]}}

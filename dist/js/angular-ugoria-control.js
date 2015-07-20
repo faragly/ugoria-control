@@ -167,7 +167,7 @@ function UgoriaCtrl($scope, $element, $attrs, $parse, $filter, $timeout, dataSer
     vm.text = elem.segments.join(' ');
     angular.element($element).val(elem.segments.join(' '));
     vm.refresh(vm.hasTail, elem.segments);
-    jQuery($element).next().children('.inner').focus();
+    jQuery($element).next().children('.dropdown__inner').focus();
   };
 }
 
@@ -256,9 +256,9 @@ function keysService() {
   * во всех случаях корректируется положение скроллинга, так чтобы фокусируемый элемент был в зоне видимости
   */
   function arrows(event) {
-    var items = jQuery('.dropdown.show .content > .flex-container > .item:visible'),
+    var items = jQuery('.dropdown--show .dropdown__inner-content .content > .flex-container > .item:visible'),
       item = items.parent().find('.item:has(a:focus)').length ? items.parent().find('.item:has(a:focus)') : event.keyCode == 40 ? items.last() : items.first(),
-      inner = jQuery('.dropdown.show > .inner'),
+      inner = jQuery('.dropdown--show > .dropdown__inner-content'),
       scrollTop = inner.scrollTop(),
       arr = [],
       el;
@@ -355,5 +355,5 @@ function keysService() {
 }
 module.exports = [keysService];
 },{}],9:[function(require,module,exports){
-'use strict'; module.exports = angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("dropdown.html","\n<div ng-class=\"{show: uc.dropdownVisible}\" class=\"dropdown bottom\">\n  <div tabindex=\"0\" ng-keydown=\"uc.keys.arrows($event)\" class=\"inner\">\n    <div class=\"dropdown-content\">\n      <div class=\"flex-container\">\n        <div ng-if=\"uc.loading\" role=\"spinner\" class=\"spinner\">\n          <div class=\"spinner-icon\"></div>\n        </div>\n        <nav ng-hide=\"!((uc.selected.segments[0] &amp;&amp; uc.hasTail) || uc.text.length)\" class=\"tabs-left\">\n          <ul class=\"nav nav-tabs\">\n            <li ng-repeat=\"item in uc.filteredSegments track by $index\" ng-class=\"{active: item == uc.selected.segments[0]}\"><a href=\"#\" ng-click=\"item != uc.selected.segments[0] ? uc.select(item) : null\">{{item}}</a></li>\n          </ul>\n        </nav>\n        <div class=\"content clearfix\">\n          <div ng-hide=\"uc.loading\" class=\"flex-container\"> \n            <div ng-if=\"!uc.data.length\">Ничего не найдено.</div>\n            <div ng-repeat=\"elem in uc.data track by $index\" ng-hide=\"elem.id === null &amp;&amp; uc.selected.segments.length &lt; 2\" class=\"item\"> <a href=\"#\" ng-click=\"uc.select(elem)\" tabindex=\"{{$index+1}}\">{{elem.id ? elem.segments[1] : elem.segments[0]}}</a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>");}]);
+'use strict'; module.exports = angular.module("templates").run(["$templateCache", function($templateCache) {$templateCache.put("dropdown.html","\n<div data-ng-class=\"{\'dropdown--show\': uc.dropdownVisible}\" class=\"dropdown\">\n  <div tabindex=\"0\" data-ng-keydown=\"uc.keys.arrows($event)\" class=\"dropdown__inner\">\n    <div class=\"dropdown__inner-content\">\n      <div class=\"flex-container\">\n        <div data-ng-if=\"uc.loading\" role=\"spinner\" class=\"spinner\">\n          <div class=\"spinner__icon\"></div>\n        </div>\n        <nav data-ng-hide=\"!((uc.selected.segments[0] &amp;&amp; uc.hasTail) || uc.text.length)\">\n          <ul class=\"menu\">\n            <li data-ng-repeat=\"item in uc.filteredSegments track by $index\" data-ng-class=\"{\'menu__item--active\': item == uc.selected.segments[0]}\" class=\"menu__item\"><a href=\"#\" data-ng-click=\"item != uc.selected.segments[0] ? uc.select(item) : null\">{{item}}</a></li>\n          </ul>\n        </nav>\n        <div class=\"content\">\n          <div data-ng-hide=\"uc.loading\" class=\"flex-container\"> \n            <div data-ng-if=\"!uc.data.length\">Ничего не найдено.</div>\n            <div data-ng-repeat=\"elem in uc.data track by $index\" data-ng-hide=\"elem.id === null &amp;&amp; uc.selected.segments.length &lt; 2\" class=\"item\"><a href=\"#\" data-ng-click=\"uc.select(elem)\" tabindex=\"{{$index+1}}\">{{elem.id ? elem.segments[1] : elem.segments[0]}}</a></div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>");}]);
 },{}]},{},[1]);

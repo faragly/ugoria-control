@@ -26,54 +26,47 @@
     &:hover
       text-decoration inherit
 
-#vehiclesControl
-  .green
-    color #5cb85c
-  
 .wrap
   position relative
 .dropdown
-  position: absolute
-  top: 0
-  left: 0
-  z-index: 1060
-  display: none
-  //max-width: 400px
-  padding: 1px
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px
-  font-style: normal
-  font-weight: normal
-  line-height: 1.42857143
-  text-align: left
-  text-align: start
-  text-decoration: none
-  text-shadow: none
-  text-transform: none
-  letter-spacing: normal
-  word-break: normal
-  word-spacing: normal
-  word-wrap: normal
-  white-space: normal
-  background-color: #fff
-  background-clip: padding-box
-  border: 1px solid #ccc
-  border: 1px solid rgba(0, 0, 0, .2)
-  border-radius: 6px
-  box-shadow: 0 5px 10px rgba(0, 0, 0, .2)
-  line-break: auto
+  position absolute
+  top 0
+  left 0
+  z-index 1060
+  display none
+  padding 1px
+  font-family "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size 14px
+  font-style normal
+  font-weight normal
+  line-height 1.42857143
+  text-align left
+  text-align start
+  text-decoration none
+  text-shadow none
+  text-transform none
+  letter-spacing normal
+  word-break normal
+  word-spacing normal
+  word-wrap normal
+  white-space normal
+  background-color #fff
+  background-clip padding-box
+  border 1px solid #ccc
+  border 1px solid rgba(0, 0, 0, .2)
+  border-radius 6px
+  box-shadow 0 5px 10px rgba(0, 0, 0, .2)
+  line-break auto
   width 580px
-  &.show
+  margin-top 2px
+  &--show
     display block
-  &.bottom
-    margin-top 2px
-  .inner
-    height: 200px;
-    overflow-x: auto;
+  &__inner
+    height 200px
+    overflow-x auto
     &:focus
       outline: none
-    .dropdown-content
-      //padding 9px 14px
+    &-content
       overflow hidden
       .flex-container
         display: flex
@@ -81,69 +74,57 @@
         > nav, > .content
           flex: 1 auto
         > nav
-          //width 22%
-          //flex: 12 3 22%
-          //flex-grow 3
           flex-basis 22%
           background-color #f5f5f5
           border-right 1px solid #ddd
+          > ul.menu
+            border-bottom 0
+            padding 0
+            > li.menu__item
+              float none
+              margin-bottom -1px
+              display block
+              > a 
+                margin-right 0
+                margin-bottom 3px
+                padding 5px 15px
+                margin-right -1px
+                border-radius 0
+                text-align left
+                border 1px solid transparent
+                display block
+                &:hover, &:focus
+                  text-decoration none
+                  background-color #eee
+                  border-color #eeeeee #dddddd #eeeeee #eeeeee
+              &--active
+                a
+                  cursor default
+                  background-color #fff
+                  border 1px solid #ddd
+                &:first-child
+                  > a, > a:hover, > a:focus
+                    border-top-color transparent
+                > a, > a:hover, > a:focus
+                  background-color #fff
+                  border-color #ddd transparent #ddd transparent
         > .content
-          //width 78%
           flex-basis 78%
-          //background: lightgreen
           padding 5px 15px
-        .item
-          flex-basis 25%
-          min-width 85px
-          a 
-            border-bottom 1px dotted #555
-            text-decoration none
-            &:hover
+          .item
+            flex-basis 25%
+            min-width 85px
+            a 
+              border-bottom 1px dotted #555
               text-decoration none
-            &:focus
-              background-color #4f9fcf
-              border-radius 3px
-              border-bottom none
-              color #fff
-              padding 0 5px
-
-.tabs-left
-  .show-all
-    position absolute
-    bottom 1px
-    left 1px
-  > .nav-tabs
-    border-bottom 0
-    padding 0
-    //float left
-    > li
-      float none
-      margin-bottom -1px
-      display block
-      > a 
-        margin-right 0
-        margin-bottom 3px
-        padding 5px 15px
-        margin-right -1px
-        border-radius 0// 4px 0 0 4px
-        text-align left
-        border 1px solid transparent
-        display block
-        &:hover, &:focus
-          text-decoration none
-          background-color #eee
-          border-color #eeeeee #dddddd #eeeeee #eeeeee
-    .active
-      a
-        cursor default
-        background-color #fff
-        border 1px solid #ddd
-      &:first-child
-        > a, > a:hover, > a:focus
-          border-top-color transparent
-      > a, > a:hover, > a:focus
-        background-color #fff
-        border-color #ddd transparent #ddd transparent
+              &:hover
+                text-decoration none
+              &:focus
+                background-color #4f9fcf
+                border-radius 3px
+                border-bottom none
+                color #fff
+                padding 0 5px
 
 /* Remove these to get rid of the spinner */
 .spinner
@@ -154,7 +135,7 @@
   left: 50%
   margin-left: -9px
   margin-top: -9px
-  .spinner-icon
+  &__icon
     width: 18px
     height: 18px
     box-sizing: border-box
