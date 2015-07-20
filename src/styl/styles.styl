@@ -1,5 +1,31 @@
 @import 'nib'
 
+.container
+  padding-right 15px
+  padding-left 15px
+  margin-right auto
+  margin-left auto
+  padding-top 40px
+  @media (min-width: 768px)
+    width 750px
+  @media (min-width: 992px)
+    width 970px
+  @media (min-width: 1200px)
+    width 1170px
+
+.browsehappy 
+  text-align center
+  padding 10px 0
+  background-color: #ce2125;
+  color #fff
+  font-size 1em
+  width 100%
+  a
+    text-decoration underline
+    color rgba(255,255,255, 0.8)
+    &:hover
+      text-decoration inherit
+
 #vehiclesControl
   .green
     color #5cb85c
@@ -52,7 +78,7 @@
       .flex-container
         display: flex
         flex-flow: row wrap
-        > nav, > aside
+        > nav, > .content
           flex: 1 auto
         > nav
           //width 22%
@@ -61,7 +87,7 @@
           flex-basis 22%
           background-color #f5f5f5
           border-right 1px solid #ddd
-        > aside
+        > .content
           //width 78%
           flex-basis 78%
           //background: lightgreen
@@ -88,25 +114,36 @@
     left 1px
   > .nav-tabs
     border-bottom 0
+    padding 0
     //float left
     > li
       float none
+      margin-bottom -1px
+      display block
       > a 
         margin-right 0
         margin-bottom 3px
         padding 5px 15px
         margin-right -1px
         border-radius 0// 4px 0 0 4px
+        text-align left
+        border 1px solid transparent
+        display block
         &:hover, &:focus
+          text-decoration none
+          background-color #eee
           border-color #eeeeee #dddddd #eeeeee #eeeeee
     .active
+      a
+        cursor default
+        background-color #fff
+        border 1px solid #ddd
       &:first-child
         > a, > a:hover, > a:focus
           border-top-color transparent
       > a, > a:hover, > a:focus
-        border-color #eeeeee #dddddd #eeeeee #eeeeee
+        background-color #fff
         border-color #ddd transparent #ddd transparent
-        *border-right-color: #ffffff
 
 /* Remove these to get rid of the spinner */
 .spinner
