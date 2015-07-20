@@ -1,7 +1,7 @@
 {
   "name": "Ugoria",
   "version": "1.0.0",
-  "description": "Vehicles control",
+  "description": "Auto control",
   "main": "app.js",
   "scripts": {},
   "author": "Faradzhli Khalik",
@@ -14,6 +14,9 @@
     "colors": "^1.1.0",
     "del": "^1.2.0",
     "gulp": "^3.9.0",
+    "gulp-angular-templatecache": "^1.7.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.0.1",
     "gulp-jshint": "^1.11.2",
     "gulp-minify-css": "^1.2.0",
@@ -24,14 +27,15 @@
     "gulp-watch": "^4.2.4",
     "http-proxy-middleware": "^0.1.0",
     "nib": "^1.1.0",
+    "uglifyify": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.2.2"
   },
-  "dependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/username/repository.git"
+  "dependencies": {
+    "angular": "^1.4.2",
+    "bootstrap": "^3.3.4",
+    "jquery": "^2.1.4"
   },
   "browserify": {
     "transform": [

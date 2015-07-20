@@ -1,7 +1,7 @@
 {
   "name": "Ugoria",
   "version": "1.0.0",
-  "description": "Vehicles control",
+  "description": "Auto control",
   "main": "App",
   "keywords": [
     "angularjs"
@@ -19,8 +19,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.5",
-    "angular": "~1.4.2",
+    "marx": "~1.3.0",
+    "angular": "~1.4.3",
     "jquery": "~2.1.4"
   }
 }
