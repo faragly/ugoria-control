@@ -3,6 +3,7 @@ browserSync = do require('browser-sync').create
 browserify  = require 'browserify'
 browserifyShim = require 'browserify-shim'
 colors      = require 'colors'
+concat      = require 'gulp-concat'
 del         = require 'del'
 jade        = require 'gulp-jade'
 jshint      = require 'gulp-jshint'
@@ -16,8 +17,15 @@ proxyMiddleware = require 'http-proxy-middleware'
 nib         = require 'nib'
 buffer      = require 'vinyl-buffer'
 source      = require 'vinyl-source-stream'
+templateCache = require 'gulp-angular-templatecache'
 
 files = [
+  {
+    input : ['./src/js/angular-ugoria-control.js']
+    output: 'angular-ugoria-control.js'
+    extensions: ['.js']
+    destination: './dist/'
+  },
   {
     input      : ['./src/js/app.js']
     output     : 'app.js'
@@ -33,8 +41,8 @@ createBundle = (options) ->
     entries: options.input
     extensions: options.extensions
     cache: {}
-    debug: true
-    insertGlobals: true
+    #debug: true
+    #insertGlobals: true
   bundler = if global.isWatching then watchify(browserify(params)) else browserify(params)
  
   rebundle = ->
@@ -43,9 +51,12 @@ createBundle = (options) ->
     .on 'error', ->
       console.log arguments
     .pipe source(options.output)
+    .pipe gulp.dest(options.destination)
     .pipe buffer()
+    .pipe sourcemaps.init loadMaps: true
     .pipe uglify()
     .pipe rename suffix: '.min'
+    .pipe sourcemaps.write('.')
     .pipe gulp.dest(options.destination)
     .on 'end', ->
       time = (new Date().getTime() - startTime) / 1000
@@ -61,7 +72,7 @@ createBundles = (bundles) ->
     createBundle
       input      : bundle.input
       output     : bundle.output
-      transform  : bundle.transform
+      #transform  : bundle.transform
       extensions : bundle.extensions
       destination: bundle.destination
 
@@ -90,10 +101,16 @@ gulp.task 'stylus', ->
     .pipe gulp.dest './public/css/'
     .pipe browserSync.stream match: '**/*.css'
 
-# Копируем boostrap
-gulp.task 'bootstrap', ->
-  gulp.src './bower_components/bootstrap/dist/**/*'
-    .pipe gulp.dest './public/assets/bootstrap/'
+# собираем css
+gulp.task 'css', ['stylus'], ->
+  gulp.src([
+    './bower_components/marx/css/marx.min.css',
+    './public/css/styles.css'
+    ])
+    .pipe concat('styles.css')
+    .pipe do minifyCSS
+    .pipe gulp.dest './public/css/'
+    .pipe browserSync.stream match: '**/*.css'
 
 # Задача, которая компилирует jade в html
 gulp.task 'jade', -> 
@@ -102,6 +119,14 @@ gulp.task 'jade', ->
     .on 'error', console.log 
     .pipe gulp.dest './public/' 
     .pipe browserSync.reload stream: true
+
+# Генерация angular-шаблонов в файл templates.js
+gulp.task 'templates', ->
+  gulp.src('./src/templates/**/*.jade')
+    .pipe jade pretty: true
+    .on 'error', console.log 
+    .pipe templateCache('templates.js', {moduleSystem: 'Browserify'})
+    .pipe gulp.dest('./src/js/')
 
 # проверка качества кода
 gulp.task 'lint', ->
@@ -119,10 +144,13 @@ gulp.task 'server', ['watch'], ->
   console.log 'Сервер работает по адресу http://localhost:8080'
 
 # Создадим задачу, смотрящую за изменениями
-gulp.task 'watch', ['setWatch', 'browserify', 'jade', 'stylus', 'bootstrap'], -> 
-  gulp.watch './src/styl/**/*.styl', ['stylus']
+gulp.task 'watch', ['setWatch', 'browserify', 'jade', 'templates', 'stylus', 'css'], -> 
+  gulp.watch './src/styl/**/*.styl', ['css']
   gulp.watch './src/*.jade', ['jade']
+  gulp.watch './src/templates/**/*.jade', ['templates']
   gulp.watch './src/**/*.js', ['lint']
   return
+
+gulp.task 'build', ['browserify', 'jade', 'templates', 'stylus', 'css']
 
 gulp.task 'default', ['server']
