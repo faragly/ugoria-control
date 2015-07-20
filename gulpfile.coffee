@@ -24,7 +24,7 @@ files = [
     input : ['./src/js/angular-ugoria-control.js']
     output: 'angular-ugoria-control.js'
     extensions: ['.js']
-    destination: './dist/'
+    destination: './dist/js/'
   },
   {
     input      : ['./src/js/app.js']
@@ -86,7 +86,7 @@ gulp.task 'setWatch', ->
 
 # Очищаем папку public
 gulp.task 'clean', -> 
-  del ['./public/*'], (err, paths) -> 
+  del ['./public/*', './dist/*'], (err, paths) -> 
     console.log 'Deleted files/folders:\n', paths.join '\n'
 
 # Компиляция стилей css
@@ -96,8 +96,8 @@ gulp.task 'stylus', ->
       use: do nib
 #      compress: true
     .on 'error', console.log
-    .pipe do minifyCSS
-    .pipe rename suffix: '.min'
+    #.pipe do minifyCSS
+    #.pipe rename suffix: '.min'
     .pipe gulp.dest './public/css/'
     .pipe browserSync.stream match: '**/*.css'
 
@@ -107,9 +107,10 @@ gulp.task 'css', ['stylus'], ->
     './bower_components/marx/css/marx.min.css',
     './public/css/styles.css'
     ])
-    .pipe concat('styles.css')
+    .pipe concat('styles.min.css')
     .pipe do minifyCSS
     .pipe gulp.dest './public/css/'
+    .pipe gulp.dest './dist/css/'
     .pipe browserSync.stream match: '**/*.css'
 
 # Задача, которая компилирует jade в html
