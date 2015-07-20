@@ -3,18 +3,18 @@ html.no-js(lang='ru')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    title
+    title Демонстрация angular-модуля
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='css/styles.min.css')
-  body(ng-app='vehicles')
+  body(data-ng-app='vehicles')
     <!--[if lt IE 8]>
     p.browsehappy
       | Ваш браузер устарел.
       | Пожалуйста, <a href="http://browsehappy.com/">обновите Ваш браузер</a> до актуальной версии.
     <![endif]-->
-    #vehiclesControl.container(ng-controller='TestCtrl')
-      input(type='text', ng-model='query', ugoria-control, uc-selected='test', placeholder='Транспортное средство')
-      | {{test}}
+    #vehiclesControl.container(data-ng-controller='TestCtrl')
+      input(type='text', data-ng-model='query', data-ugoria-control, data-uc-selected='selected', placeholder='Транспортное средство')
+      label(data-ng-if='selected.id') &#10004; {{selected}}
 
     script(src='js/app.min.js')

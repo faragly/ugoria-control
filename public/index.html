@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Демонстрация angular-модуля</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/styles.min.css">
   </head>
-  <body ng-app="vehicles"><!--[if lt IE 8]>
+  <body data-ng-app="vehicles"><!--[if lt IE 8]>
     <p class="browsehappy">
       Ваш браузер устарел.
       Пожалуйста, <a href="http://browsehappy.com/">обновите Ваш браузер</a> до актуальной версии.
     </p><![endif]-->
-    <div id="vehiclesControl" ng-controller="TestCtrl" class="container">
-      <input type="text" ng-model="query" ugoria-control uc-selected="test" placeholder="Транспортное средство">{{test}}
+    <div id="vehiclesControl" data-ng-controller="TestCtrl" class="container">
+      <input type="text" data-ng-model="query" data-ugoria-control data-uc-selected="selected" placeholder="Транспортное средство">
+      <label data-ng-if="selected.id">&#10004; {{selected}}</label>
     </div>
     <script src="js/app.min.js"></script>
   </body>
