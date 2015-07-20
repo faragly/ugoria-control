@@ -6,24 +6,15 @@ html.no-js(lang='ru')
     title
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel='stylesheet', href='assets/bootstrap/css/bootstrap.min.css')
-    link(rel='stylesheet', href='css/styles.min.css')
-  body
+    link(rel='stylesheet', href='css/styles.css')
+  body(ng-app='vehicles')
     <!--[if lt IE 8]>
     p.browsehappy
-      | You are using an <strong>outdated</strong> browser.
-      | Please <a href="http://browsehappy.com/">upgrade your browser</a>
-      | to improve your experience.
+      | Ваш браузер устарел.
+      | Пожалуйста, <a href="http://browsehappy.com/">обновите Ваш браузер</a> до актуальной версии.
     <![endif]-->
-  body(ng-app='vehicles')
-    div#vehiclesControl.container(ng-controller='VehiclesCtrl' ng-init='refresh()')
-      div.row(style='padding-top:40px;')
-        .col-md-3.form-inline
-          .form-group
-            .input-group
-              input#selectVehicle.form-control(type='text', ng-model='q', ng-focus='showDropdown($event)', placeholder='Транспортное средство', focus='true', ng-keyup='refresh(true)', tabindex='1', aria-describedby='basic-addon')
-              span#basic-addon.input-group-addon(ng-class='{green: selected.id > 0}')
-                span.glyphicon.glyphicon-ok
-        .col-md-9 {{selected}}
-      include ./_dropdownTemplate.jade
+    #vehiclesControl.container(ng-controller='TestCtrl')
+      input(type='text', ng-model='query', ugoria-control, uc-selected='test', placeholder='Транспортное средство')
+      | {{test}}
+
     script(src='js/app.min.js')
