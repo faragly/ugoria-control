@@ -1,9 +1,15 @@
 module.exports = ['$httpProvider', function ($httpProvider) {
+  // устанавливаем url для запросов
+  //optionsProvider.setRootUrl('/api/Data');
+  
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
   //$httpProvider.defaults.useXDomain = true;
   //$httpProvider.defaults.withCredentials = true;
   //delete $httpProvider.defaults.headers.common["X-Requested-With"];
-  
+  //$httpProvider.defaults.headers.common["Accept"] = "application/json";
+  //$httpProvider.defaults.headers.common["Content-Type"] = "application/json";
+  //console.log($httpProvider.defaults.headers);
+  //$httpProvider.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
   /**
   * The workhorse; converts an object to x-www-form-urlencoded serialization.
   * @param {Object} obj

@@ -14,7 +14,7 @@ function keysService() {
   * во всех случаях корректируется положение скроллинга, так чтобы фокусируемый элемент был в зоне видимости
   */
   function arrows(event) {
-    var items = jQuery('.dropdown.show aside > .flex-container > .item'),
+    var items = jQuery('.dropdown.show .content > .flex-container > .item:visible'),
       item = items.parent().find('.item:has(a:focus)').length ? items.parent().find('.item:has(a:focus)') : event.keyCode == 40 ? items.last() : items.first(),
       inner = jQuery('.dropdown.show > .inner'),
       scrollTop = inner.scrollTop(),
