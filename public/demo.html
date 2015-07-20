@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Демонстрация angular-модуля</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./../dist/css/styles.min.css">
+  </head>
+  <body data-ng-app="vehicles"><!--[if lt IE 8]>
+    <p class="browsehappy">
+      Ваш браузер устарел.
+      Пожалуйста, <a href="http://browsehappy.com/">обновите Ваш браузер</a> до актуальной версии.
+    </p><![endif]-->
+    <div id="vehiclesControl" data-ng-controller="TestCtrl" class="container">
+      <input type="text" data-ng-model="query" data-ugoria-control data-uc-selected="selected" placeholder="Транспортное средство">
+      <label data-ng-if="selected.id">&#10004; {{selected}}</label>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./../dist/js/angular-ugoria-control.min.js"></script>
+    <script>
+      var app = angular.module('vehicles', ['ngUgoriaControl']);
+      app.config(['optionsProvider', function(optionsProvider) {
+        //optionsProvider.setRootUrl('/api/Data');
+        optionsProvider.setRequestInterval(1000);
+      }]);
+      app.controller('TestCtrl', ['$scope', function($scope) {
+        $scope.value = '';
+      }]);
+    </script>
+  </body>
+</html>

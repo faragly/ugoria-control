@@ -1,0 +1,33 @@
+doctype
+html.no-js(lang='ru')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Демонстрация angular-модуля
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='./../dist/css/styles.min.css')
+  body(data-ng-app='vehicles')
+    <!--[if lt IE 8]>
+    p.browsehappy
+      | Ваш браузер устарел.
+      | Пожалуйста, <a href="http://browsehappy.com/">обновите Ваш браузер</a> до актуальной версии.
+    <![endif]-->
+    #vehiclesControl.container(data-ng-controller='TestCtrl')
+      input(type='text', data-ng-model='query', data-ugoria-control, data-uc-selected='selected', placeholder='Транспортное средство')
+      label(data-ng-if='selected.id') &#10004; {{selected}}
+
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='./../dist/js/angular-ugoria-control.min.js')
+    script.
+      var app = angular.module('vehicles', ['ngUgoriaControl']);
+      app.config(['optionsProvider', function(optionsProvider) {
+        // можем задать другой url
+        //optionsProvider.setRootUrl('/api/Data');
+        // задаем время между запросами
+        optionsProvider.setRequestInterval(1000);
+      }]);
+      app.controller('TestCtrl', ['$scope', function($scope) {
+        $scope.value = '';
+      }]);
